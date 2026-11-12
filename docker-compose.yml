@@ -1,0 +1,19 @@
+services:
+  python-fastapi-service: # Имя, по которому Java будет обращаться к Python
+    build: .
+    container_name: python-ai-service
+    ports:
+      - "5000:5000"
+    networks:
+      - shared-network
+    volumes:
+      - my_global_code_storage:/codes:rw
+
+networks:
+  shared-network:
+    external: true
+    name: ai-career-network
+
+volumes:
+  my_global_code_storage:
+    external: true
